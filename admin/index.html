@@ -355,61 +355,60 @@
             <div class="container-fluid">
               <div class="row">
 
-
+            {% for pr in product %}
             <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">{{ title }}</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">{{ pr.title }}</h6>
                 </div>
                 <div class="card-body">
                     <div class="text-center">
                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                            src="\static\img\product\{{ img_path }}" alt="...">
+                            src="\static\img\product\{{pr.image_file_path}}" alt="...">
                     </div>
-                    <p>{{ about }}</p>
+                    <p>{{ pr.about }}</p>
                     <a target="_blank" rel="nofollow" href="https://undraw.co/">Редактировать</a>
                 </div>
             </div>
-
-
-        </div>
-        <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">{{ title }}</h6>
             </div>
-            <div class="card-body">
-                <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                        src="../assets/img/product/2.jpg" alt="...">
-                </div>
-                <p>Add some quality, svg illustrations to your project courtesy of <a
-                        target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
-                    constantly updated collection of beautiful svg images that you can use
-                    completely free and without attribution!</p>
-                <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
-                    unDraw &rarr;</a>
-            </div>
-        </div>
+        {% endfor %}
+<!--        <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0">-->
+<!--        <div class="card shadow mb-4">-->
+<!--            <div class="card-header py-3">-->
+<!--                <h6 class="m-0 font-weight-bold text-primary">{{ title }}</h6>-->
+<!--            </div>-->
+<!--            <div class="card-body">-->
+<!--                <div class="text-center">-->
+<!--                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"-->
+<!--                        src="../assets/img/product/2.jpg" alt="...">-->
+<!--                </div>-->
+<!--                <p>Add some quality, svg illustrations to your project courtesy of <a-->
+<!--                        target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a-->
+<!--                    constantly updated collection of beautiful svg images that you can use-->
+<!--                    completely free and without attribution!</p>-->
+<!--                <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on-->
+<!--                    unDraw &rarr;</a>-->
+<!--            </div>-->
+<!--        </div>-->
 
 
-    </div>
-    <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0">
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
-        </div>
-        <div class="card-body">
-            <div class="text-center">
-                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                    src="../assets/img/product/3.jpg" alt="...">
-            </div>
-            <p>Add some quality, svg illustrations to your project courtesy of <a
-                    target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
-                constantly updated collection of beautiful svg images that you can use
-                completely free and without attribution!</p>
-            <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
-                unDraw &rarr;</a>
+<!--    </div>-->
+<!--    <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0">-->
+<!--    <div class="card shadow mb-4">-->
+<!--        <div class="card-header py-3">-->
+<!--            <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>-->
+<!--        </div>-->
+<!--        <div class="card-body">-->
+<!--            <div class="text-center">-->
+<!--                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"-->
+<!--                    src="../assets/img/product/3.jpg" alt="...">-->
+<!--            </div>-->
+<!--            <p>Add some quality, svg illustrations to your project courtesy of <a-->
+<!--                    target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a-->
+<!--                constantly updated collection of beautiful svg images that you can use-->
+<!--                completely free and without attribution!</p>-->
+<!--            <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on-->
+<!--                unDraw &rarr;</a>-->
         </div>
     </div>
 

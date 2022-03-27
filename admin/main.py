@@ -14,13 +14,12 @@ with open('csv_files/products.csv', encoding="utf8") as csvfile:
 db_session.global_init("db/assortment.db")
 
 db_sess = db_session.create_session()
-product = db_sess.query(Product).first()
+product = db_sess.query(Product).all()
 
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
-    return render_template('index.html', title=product.title,
-                           about=product.about, img_path=product.image_file_path)
+    return render_template('index.html', product=product)
 
 
 def main():
