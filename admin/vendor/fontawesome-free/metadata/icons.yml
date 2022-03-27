@@ -7140,7 +7140,7 @@ file-excel:
   label: Excel File
   search:
     terms:
-      - csv
+      - csv_files
       - document
       - numbers
       - spreadsheets
