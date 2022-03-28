@@ -1,6 +1,6 @@
 import csv
 import os
-from flask import Flask, render_template, request,redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for
 from data import db_session
 from data.products import Product
 from werkzeug.utils import secure_filename
@@ -82,7 +82,6 @@ def add():
             db_sess.commit()
             return redirect("/admin")
         return redirect("/")
-
 
 
 def main():
