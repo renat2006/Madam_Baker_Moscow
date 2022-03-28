@@ -492,9 +492,7 @@ section {
   margin-bottom: 0;
 }
 
-/*--------------------------------------------------------------
-# Clients
---------------------------------------------------------------*/
+
 .clients {
   padding: 12px 0;
   text-align: center;
@@ -509,6 +507,8 @@ section {
 .clients img:hover {
   filter: none;
   transform: scale(1.1);
+  
+
 }
 @media (max-width: 768px) {
   .clients img {
