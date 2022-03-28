@@ -366,7 +366,14 @@
                             src="\static\img\product\{{pr.image_file_path}}" alt="...">
                     </div>
                     <p>{{ pr.about }}</p>
-                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Редактировать</a>
+                    <form method="post">
+                        <a href="/edit/{{ pr.id }}" class="btn btn-warning">
+                            Изменить
+                        </a>
+                        <a href="/delete" class="btn btn-danger">
+                            Удалить
+                        </a>
+                    </form>
                 </div>
             </div>
             </div>
