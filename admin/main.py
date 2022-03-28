@@ -33,30 +33,31 @@ def admin():
 @app.route('/edit/<index>', methods=['GET', 'POST'])
 def edit(index):
     form = EditForm()
+    db_sess = db_session.create_session()
+    item = db_sess.query(Product).get(int(index))
     if request.method == 'GET':
-        return render_template('edit.html', product=product, form=form)
+        return render_template('edit.html', product=product, form=form, item=item)
     elif request.method == 'POST':
         if form.validate_on_submit():
             f = request.files['file']
             filename = secure_filename(f.filename)
             f.save(f'static/img/product/{filename}')
-            db_sess = db_session.create_session()
-            item = db_sess.query(Product).get(int(index))
-            item.title = form.title.data
-            item.about = form.content.data
-            item.image_file_path = filename
-            print(product[int(index) - 1].title)
+            if item.title != form.title.data:
+                item.title = form.title.data
+            if form.content.data != item.about:
+                item.about = form.content.data
+            if item.image_file_path != filename:
+                item.image_file_path = filename
             db_sess.add(item)
             db_sess.commit()
             return redirect("/admin")
-        return redirect("/")
+        return render_template("404.html")
 
 
 @app.route('/delete/<index>', methods=['GET', 'POST'])
 def delete(index):
     db_sess = db_session.create_session()
     item = db_sess.query(Product).get(int(index))
-    print(product[int(index) - 1].title)
     db_sess.delete(item)
     db_sess.commit()
     return redirect("/admin")

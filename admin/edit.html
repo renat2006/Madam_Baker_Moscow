@@ -16,10 +16,10 @@
             {{ form.hidden_tag() }}
             <p>
                 {{ form.title.label }}<br>
-                {{ form.title(class="form-control") }}<br>
+                {{ form.title(class="form-control", value=item.title) }}<br>
                 <p>
                     {{ form.content.label }}<br>
-                    {{ form.content(class="form-control") }}<br>
+                    {{ form.content(class="form-control", value=item.about) }}<br>
                     {% for error in form.content.errors %}
                         <p content="alert alert-danger" role="alert">
                             {{ error }}
