@@ -352,6 +352,7 @@
 
             <!-- Footer -->
             <div class="container-fluid">
+                <a href="/add" class="btn btn-secondary">Добавить</a>
               <div class="row">
 
             {% for pr in product %}
@@ -370,7 +371,7 @@
                         <a href="/edit/{{ pr.id }}" class="btn btn-warning">
                             Изменить
                         </a>
-                        <a href="/delete" class="btn btn-danger">
+                        <a href="/delete/{{ pr.id }}" class="btn btn-danger">
                             Удалить
                         </a>
                     </form>
