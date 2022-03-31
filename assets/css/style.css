@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Hurricane&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #444444;
 }
 
@@ -502,7 +502,7 @@ section {
   transition: all 0.4s ease-in-out;
   display: inline-block;
   padding: 15px 0;
-
+  
 }
 .clients img:hover {
   filter: none;
@@ -528,9 +528,6 @@ section {
   padding: 0;
 }
 .about .content ul li {
-  text-align: left;
-  font-size: 18px;
-  font-family: 'Montserrat', sans-serif;
   padding-left: 28px;
   position: relative;
 }
@@ -545,16 +542,11 @@ section {
   color: #3E8C88;
   line-height: 1;
 }
-.about .content p{
-  text-align: left;
-  font-size: 18px;
-  font-family: 'Montserrat', sans-serif;
-}
 .about .content p:last-child {
   margin-bottom: 0;
 }
 .about .content .btn-learn-more {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 1px;
@@ -762,7 +754,6 @@ section {
   transition: ease-in-out 0.3s;
 }
 .services .icon-box p {
-  font-family: 'Montserrat', sans-serif;
   line-height: 24px;
   font-size: 14px;
   margin-bottom: 0;
