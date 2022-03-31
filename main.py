@@ -10,7 +10,7 @@ app.config['SECRET_KEY'] = 'baker_admin_secret_key'
 db_session.global_init("admin/db/assortment.db")
 
 
-@app.route('/madam_baker', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def baker():
     db_sess = db_session.create_session()
     products = db_sess.query(Product).all()
