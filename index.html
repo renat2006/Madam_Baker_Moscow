@@ -16,9 +16,9 @@
 <meta name="robots" content="index, follow">
 <meta name="language" content="Russian">
 <meta name="author" content="Madam Baker">
-  <link rel="shortcut icon" href="assets/img/favicon.png">
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/favicon.png" rel="apple-touch-icon">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png')}}">
+  <link href="{{ url_for('static', filename='img/favicon.png')}}" rel="icon">
+  <link href="{{ url_for('static', filename='img/favicon.png')}}" rel="apple-touch-icon">
 
 
   <link
@@ -26,16 +26,16 @@
     rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Hurricane&display=swap" rel="stylesheet">
 
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+ <link href="{{ url_for('static', filename='vendor/aos/aos.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" integrity="sha384-ejwKkLla8gPP8t2u0eQyL0Q/4ItcnyveF505U0NIobD/SMsNyXrLti6CWaD0L52l" crossorigin="anonymous">
 
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet">
 
 
 </head>
@@ -86,7 +86,7 @@
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-          <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
+          <img src="{{ url_for('static', filename='img/hero-img.png')}}" class="img-fluid animated" alt="">
         </div>
       </div>
     </div>
@@ -104,24 +104,24 @@
         <div class="row" data-aos="zoom-in">
 
           <div class="col-lg-4 col-md-4 col-12 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-1.png" class="img-fluid" alt="">
+            <img src="{{ url_for('static', filename='img/clients/client-1.png')}}" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-4 col-md-4 col-12 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-2.png" class="img-fluid" alt="">
+            <img src="{{ url_for('static', filename='img/clients/client-2.png')}}" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-4 col-md-4 col-12 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-3.png" class="img-fluid" alt="">
+            <img src="{{ url_for('static', filename='img/clients/client-3.png')}}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-4 col-md-4 col-12 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-4.png" class="img-fluid" alt="">
+            <img src="{{ url_for('static', filename='img/clients/client-4.png')}}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-4 col-md-4 col-12 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-5.png" class="img-fluid" alt="">
+            <img src="{{ url_for('static', filename='img/clients/client-5.png')}}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-4 col-md-4 col-12 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-6.png" class="img-fluid" alt="">
+            <img src="{{ url_for('static', filename='img/clients/client-6.png')}}" class="img-fluid" alt="">
           </div>
 
 
@@ -279,68 +279,77 @@
 
         </div>
 
-        <div class="row">
+         <div class="row">
+          {% for item in products %}
           <div class="col-xl-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
-              <div class="icon"><img class="product" src="assets/img/product/1.jpg" alt=""></div>
-              <h4><a href="portfolio-details.html">Трубочки со сгущенкой</a></h4>
-              <p>Вкус как в детстве. Только лучше!</p>
+              <div class="icon"><img class="product" src="static/img/product/{{item.image_file_path}}" alt=""></div>
+              <h4><a href="portfolio-details.html">{{ item.title }}</a></h4>
+              <p>{{ item.about }}</p>
               <br>
               <span class="badge rounded-pill bg-info text-light" style="float:right;">Новинка!</span>
             </div>
           </div>
+<!--          <div class="col-xl-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">-->
+<!--            <div class="icon-box">-->
+<!--              <div class="icon"><img class="product" src="assets/img/product/1.jpg" alt=""></div>-->
+<!--              <h4><a href="portfolio-details.html">Трубочки со сгущенкой</a></h4>-->
+<!--              <p>Вкус как в детстве. Только лучше!</p>-->
+<!--              <br>-->
+<!--              <span class="badge rounded-pill bg-info text-light" style="float:right;">Новинка!</span>-->
+<!--            </div>-->
+<!--          </div>-->
 
-          <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon-box">
-              <div class="icon"><img class="product" src="assets/img/product/2.jpg" alt=""></div>
-              <h4><a href="portfolio-details.html">Песочное печенье</a></h4>
-              <p>Самые узнаваемые печеньки на рынке!</p>
-              <br>
-              <span class="badge rounded-pill bg-danger text-light" style="float:right;">Хит!</span>
-            </div>
-          </div>
+<!--          <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">-->
+<!--            <div class="icon-box">-->
+<!--              <div class="icon"><img class="product" src="assets/img/product/2.jpg" alt=""></div>-->
+<!--              <h4><a href="portfolio-details.html">Песочное печенье</a></h4>-->
+<!--              <p>Самые узнаваемые печеньки на рынке!</p>-->
+<!--              <br>-->
+<!--              <span class="badge rounded-pill bg-danger text-light" style="float:right;">Хит!</span>-->
+<!--            </div>-->
+<!--          </div>-->
 
-          <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon-box">
-              <div class="icon"><img class="product" src="assets/img/product/3.jpg" alt=""></div>
-              <h4><a href="portfolio-details.html">Тарты</a></h4>
-              <p>Божественные тарты!</p>
-            </div>
-          </div>
+<!--          <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">-->
+<!--            <div class="icon-box">-->
+<!--              <div class="icon"><img class="product" src="assets/img/product/3.jpg" alt=""></div>-->
+<!--              <h4><a href="portfolio-details.html">Тарты</a></h4>-->
+<!--              <p>Божественные тарты!</p>-->
+<!--            </div>-->
+<!--          </div>-->
 
-          <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="400">
-            <div class="icon-box">
-              <div class="icon"><img class="product" src="assets/img/product/4.jpg" alt=""></div>
-              <h4><a href="portfolio-details.html">Маффины</a></h4>
-              <p>Ммм... маффины!</p>
-            </div>
-          </div>
-          <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="500">
-            <div class="icon-box">
-              <div class="icon"><img class="product" src="assets/img/product/5.jpg" alt=""></div>
-              <h4><a href="portfolio-details.html">Блинчики</a></h4>
-              <p>Ну какавы блины!</p>
-              <br>
-              <span class="badge rounded-pill bg-info text-light" style="float:right;">Новинка!</span>
-            </div>
-          </div>
-          <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="600">
-            <div class="icon-box">
-              <div class="icon"><img class="product" src="assets/img/product/6.jpg" alt=""></div>
-              <h4><a href="portfolio-details.html">Эклеры</a></h4>
-              <p>Ну прям</p>
-                <p>кусочек Франции на Вашей витрине!</p>
-            </div>
-          </div>
-          <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="600">
-            <div class="icon-box">
-              <div class="icon"><img class="product" src="assets/img/product/7.jpg" alt=""></div>
-              <h4><a href="portfolio-details.html">Макарони</a></h4>
-              <p>От одной ничего не будет!</p>
-            </div>
-          </div>
-        </div>
-
+<!--          <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="400">-->
+<!--            <div class="icon-box">-->
+<!--              <div class="icon"><img class="product" src="assets/img/product/4.jpg" alt=""></div>-->
+<!--              <h4><a href="portfolio-details.html">Маффины</a></h4>-->
+<!--              <p>Ммм... маффины!</p>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="500">-->
+<!--            <div class="icon-box">-->
+<!--              <div class="icon"><img class="product" src="assets/img/product/5.jpg" alt=""></div>-->
+<!--              <h4><a href="portfolio-details.html">Блинчики</a></h4>-->
+<!--              <p>Ну какавы блины!</p>-->
+<!--              <br>-->
+<!--              <span class="badge rounded-pill bg-info text-light" style="float:right;">Новинка!</span>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="600">-->
+<!--            <div class="icon-box">-->
+<!--              <div class="icon"><img class="product" src="assets/img/product/6.jpg" alt=""></div>-->
+<!--              <h4><a href="portfolio-details.html">Эклеры</a></h4>-->
+<!--              <p>Ну прям кусочек Франции на Вашей витрине!</p>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="600">-->
+<!--            <div class="icon-box">-->
+<!--              <div class="icon"><img class="product" src="assets/img/product/7.jpg" alt=""></div>-->
+<!--              <h4><a href="portfolio-details.html">Макарони</a></h4>-->
+<!--              <p>От одной ничего не будет!</p>-->
+<!--            </div>-->
+<!--          </div>-->
+                {% endfor %}
+         </div>
       </div>
     </section>
 
@@ -608,16 +617,16 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="{{ url_for('static', filename='vendor/aos/aos.js')}}"></script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='vendor/glightbox/js/glightbox.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='vendor/waypoints/noframework.waypoints.js')}}"></script>
+  <script src="{{ url_for('static', filename='vendor/php-email-form/validate.js')}}"></script>
 
 
-  <script src="assets/js/main.js"></script>
+  <script src="{{ url_for('static', filename='js/main.js')}}"></script>
 
 </body>
 
