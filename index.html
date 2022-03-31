@@ -6,15 +6,19 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Madam Baker</title>
+  <meta name="title" content="Madam Baker">
   <meta content="Madam Baker
+Модные десерты для кофеен
 Бесплатная доставка от 4500 рублей по Москве
 Заказы принимаем 7 дней в неделю
 Готовы к сотрудничеству с дистрибьюторами в регионах" name="description">
-  <meta content="Madam Baker" name="keywords">
-
-
+<meta name="keywords" content="Madam Baker, Печенье, Десерты для кофеен, Madam, Baker, Модные десерты для кофеен">
+<meta name="robots" content="index, follow">
+<meta name="language" content="Russian">
+<meta name="author" content="Madam Baker">
+  <link rel="shortcut icon" href="assets/img/favicon.png">
   <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/img/favicon.png" rel="apple-touch-icon">
 
 
   <link
@@ -93,7 +97,7 @@
 
     <section id="clients" class="clients section-bg">
       <div class="section-title">
-        <h2>Наши клиенты</h2>
+        <h2>Наши партнёры</h2>
       </div>
       <div class="container">
 
@@ -180,7 +184,7 @@
             <div class="icon-box">
               <div class="icon"><i class="bi bi-calendar-check"></i></div>
               <h4><a href=""><strong>Длительный срок хранения</strong></a></h4>
-              <p>В нашем ассортименте есть как продукция, хранящаяся при комнатной температуре до 4 месяцев за счет вакуумной упаковки, так и продукция в заморозке со сроком годоности до 6 месяцев.</p>
+              <p>В нашем ассортименте есть как продукция, хранящаяся при комнатной температуре до 4 месяцев за счет вакуумной упаковки, так и продукция в заморозке со сроком годности до 6 месяцев.</p>
             </div>
           </div>
 
@@ -196,14 +200,14 @@
             <div class="icon-box">
               <div class="icon"><i class="bi bi-truck"></i></div>
               <h4><a href=""><strong>Быстрая доставка и сервис</strong></a></h4>
-              <p>Мы осуществляем доставку от 1-го до 3-х дней по Москве и МО. Ваш персональный менеджер с удовольствием ответит на все Ваши вопросы и поможет с решением любой проблемы. Мы страемся найти индивидуальный подход к каждому Клиенту.</p>
+              <p>Мы осуществляем доставку от 1-го до 3-х дней по Москве и МО. Ваш персональный менеджер с удовольствием ответит на все Ваши вопросы и поможет с решением любой проблемы. Мы стараемся найти индивидуальный подход к каждому Клиенту.</p>
             </div>
           </div>
           <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="400">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-award"></i></div>
               <h4><a href=""><strong>Высокое качество продукции </strong></a></h4>
-              <p>Мы тщательно отбираем поставщиков, чтобы сохранить <strong>качетво и доступные цены</strong> на нашу продукцию. Мы всегда рады обратной связи и новым предложениям.</p>
+              <p>Мы тщательно отбираем поставщиков, чтобы сохранить <strong>качество и доступные цены</strong> на нашу продукцию. Мы всегда рады обратной связи и новым предложениям.</p>
             </div>
           </div>
 
@@ -323,7 +327,10 @@
             <div class="icon-box">
               <div class="icon"><img class="product" src="assets/img/product/6.jpg" alt=""></div>
               <h4><a href="portfolio-details.html">Эклеры</a></h4>
-              <p>Ну прям кусочек Франции на Вашей витрине!</p>
+              <p>Ну прям кусочек</p>
+                <p>
+
+                Франции на Вашей витрине!</p>
             </div>
           </div>
           <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="600">
@@ -465,10 +472,12 @@
 
 
           <div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form method="post" action="" role="form" class="php-email-form" name="publish">
+            <form id="form-contact"  class="contact-form" method="post" action="" role="form"  name="publish" enctype="multipart/form-data">
+              <div class="preloader"></div>
+              <p class="contact-form__message"></p>
               <div class="row">
                 <div class="form-group col-md-4">
-                  <label for="name">ФИО</label>
+                  <label for="name">Имя</label>
                   <input type="text" name="name" class="form-control" id="name" required>
                 </div>
                 <div class="form-group col-md-4">
@@ -477,28 +486,38 @@
                 </div>
                 <div class="form-group col-md-4">
                   <label for="name">Телефон</label>
-                  <input type="tel" class="form-control" name="tel" id="tel" required>
+                  <input type="tel" class="form-control" name="phone" id="tel" required>
                 </div>
               </div>
               <div class="form-group">
                 <label for="name">Название компании</label>
                 <input type="text" class="form-control" name="subject" id="subject" required>
               </div>
+              <div class="form-group">
+                <label for="name">Город</label>
+                <input type="text" class="form-control" name="city" id="city" required>
+              </div>
 
               <div class="form-group">
                 <label for="name">Сообщение</label>
-                <textarea class="form-control" name="message" rows="10" required></textarea>
+                <textarea class="form-control" name="text" rows="10" required></textarea>
               </div>
-
-              <div class="text-center"><button  type="submit"><i
-                    class="bi bi-whatsapp"></i> Запросить прайс</button></div>
+              <input name="theme" type="hidden" class="contact-form__input contact-form__input_theme"
+         value="Новая заявка!">
+         <div class="my-3">
+           <div class="loading" id="loading">Отправка</div>
+           <div class="error-message" id="error-message"></div>
+           <div class="sent-message" id="sent-message">Заявка отправлена! Спасибо!</div>
+         </div>
+              <div class="text-center"><button   type="submit">Запросить прайс</button></div>
             </form>
           </div>
+
           <div class="col-lg-12 d-flex align-items-stretch">
             <div class="info">
               <div class="address">
                 <i class="bi bi-geo-alt"></i>
-                <h4>Мы находися</h4>
+                <h4>Мы находимся</h4>
                 <p>г. Москва</p>
               </div>
 
@@ -508,11 +527,11 @@
                 <p>madam.baker.moscow@gmail.com</p>
               </div>
 
-              <div class="phone">
+              <!-- <div class="phone">
                 <i class="bi bi-phone"></i>
                 <h4>Whatsapp</h4>
                 <p>+7 800 555 35 35</p>
-              </div>
+              </div> -->
 
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d457655.1684563926!2d36.58261870369057!3d55.630195256036565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54afc73d4b0c9%3A0x3d44d6cc5757cf4c!2sMoscow!5e0!3m2!1sen!2sru!4v1647861087001!5m2!1sen!2sru"
@@ -524,21 +543,9 @@
         </div>
 
       </div>
-      <script type="text/javascript">
-        document.forms.publish.onsubmit = function() {
-          var name = this.name.value;
-          var email = this.email.value;
-          var message = this.message.value;
-          var subject = this.subject.value;
-          var total =
-`Фио: ${name}
-Email: ${email}
-Компания: ${subject}
-Сообщение: ${message}`
-          window.location = 'https://api.whatsapp.com/send/?phone=79625553018&text=' + encodeURIComponent(total);
-          return false;
-        };
-      </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="main.js"></script>
+
     </section>
 
   </main>
@@ -568,7 +575,7 @@ Email: ${email}
             <h3>Madam Baker</h3>
             <p>
               Москва <br><br>
-              <strong>Телефон:</strong> +7 800 555 35 35<br>
+              <!-- <strong>Телефон:</strong> +7 800 555 35 35<br> -->
               <strong>Email:</strong> madam.baker.moscow@gmail.com<br>
             </p>
           </div>

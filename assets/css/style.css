@@ -1,6 +1,6 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Hurricane&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color: #444444;
 }
 
@@ -502,12 +502,12 @@ section {
   transition: all 0.4s ease-in-out;
   display: inline-block;
   padding: 15px 0;
-  filter: grayscale(100);
+
 }
 .clients img:hover {
   filter: none;
   transform: scale(1.1);
-  
+
 
 }
 @media (max-width: 768px) {
@@ -528,6 +528,9 @@ section {
   padding: 0;
 }
 .about .content ul li {
+  text-align: left;
+  font-size: 18px;
+  font-family: 'Montserrat', sans-serif;
   padding-left: 28px;
   position: relative;
 }
@@ -542,11 +545,16 @@ section {
   color: #3E8C88;
   line-height: 1;
 }
+.about .content p{
+  text-align: left;
+  font-size: 18px;
+  font-family: 'Montserrat', sans-serif;
+}
 .about .content p:last-child {
   margin-bottom: 0;
 }
 .about .content .btn-learn-more {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 1px;
@@ -754,6 +762,7 @@ section {
   transition: ease-in-out 0.3s;
 }
 .services .icon-box p {
+  font-family: 'Montserrat', sans-serif;
   line-height: 24px;
   font-size: 14px;
   margin-bottom: 0;
@@ -1273,7 +1282,7 @@ section {
   background: #3E8C88;
   color: #fff;
 }
-.contact .php-email-form {
+.contact .contact-form {
   width: 100%;
   border-top: 3px solid #3E8C88;
   border-bottom: 3px solid #3E8C88;
@@ -1281,17 +1290,17 @@ section {
   background: #fff;
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
 }
-.contact .php-email-form .form-group {
+.contact .contact-form .form-group {
   padding-bottom: 8px;
 }
-.contact .php-email-form .validate {
+.contact .contact-form .validate {
   display: none;
   color: red;
   margin: 0 0 15px 0;
   font-weight: 400;
   font-size: 13px;
 }
-.contact .php-email-form .error-message {
+.contact .contact-form .error-message {
   display: none;
   color: #fff;
   background: #ed3c0d;
@@ -1299,10 +1308,10 @@ section {
   padding: 15px;
   font-weight: 600;
 }
-.contact .php-email-form .error-message br + br {
+.contact .contact-form .error-message br + br {
   margin-top: 25px;
 }
-.contact .php-email-form .sent-message {
+.contact .contact-form .sent-message {
   display: none;
   color: #fff;
   background: #18d26e;
@@ -1310,13 +1319,13 @@ section {
   padding: 15px;
   font-weight: 600;
 }
-.contact .php-email-form .loading {
+.contact .contact-form .loading {
   display: none;
   background: #fff;
   text-align: center;
   padding: 15px;
 }
-.contact .php-email-form .loading:before {
+.contact .contact-form .loading:before {
   content: "";
   display: inline-block;
   border-radius: 50%;
@@ -1328,28 +1337,28 @@ section {
   -webkit-animation: animate-loading 1s linear infinite;
   animation: animate-loading 1s linear infinite;
 }
-.contact .php-email-form .form-group {
+.contact .contact-form .form-group {
   margin-bottom: 20px;
 }
-.contact .php-email-form label {
+.contact .contact-form label {
   padding-bottom: 8px;
 }
-.contact .php-email-form input, .contact .php-email-form textarea {
+.contact .contact-form input, .contact .contact-form textarea {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
   border-radius: 4px;
 }
-.contact .php-email-form input:focus, .contact .php-email-form textarea:focus {
+.contact .contact-form input:focus, .contact .contact-form textarea:focus {
   border-color: #3E8C88;
 }
-.contact .php-email-form input {
+.contact .contact-form input {
   height: 44px;
 }
-.contact .php-email-form textarea {
+.contact .contact-form textarea {
   padding: 10px 12px;
 }
-.contact .php-email-form button[type=submit] {
+.contact .contact-form button[type=submit] {
   background: #3E8C88;
   border: 0;
   padding: 12px 34px;
@@ -1357,7 +1366,7 @@ section {
   transition: 0.4s;
   border-radius: 50px;
 }
-.contact .php-email-form button[type=submit]:hover {
+.contact .contact-form button[type=submit]:hover {
   background: #2D6663;
 }
 @-webkit-keyframes animate-loading {
