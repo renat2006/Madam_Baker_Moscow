@@ -13,14 +13,12 @@ app = Flask(__name__, template_folder=".")
 app.config['SECRET_KEY'] = 'baker_admin_secret_key'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-with open('csv_files/products.csv', encoding="utf8") as csvfile:
-    reader = csv.DictReader(csvfile, delimiter=',', quotechar='"')
-    products = list(reader)
-
 db_session.global_init("db/assortment.db")
 
 db_sess = db_session.create_session()
 product = db_sess.query(Product).all()
+print(product[2].title)
+print(product[2].status)
 
 
 @app.route('/admin', methods=['GET', 'POST'])

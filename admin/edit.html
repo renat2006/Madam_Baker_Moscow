@@ -19,7 +19,7 @@
                 {{ form.title(class="form-control", value=item.title) }}<br>
                 <p>
                     {{ form.content.label }}<br>
-                    {{ form.content(class="form-control", value=item.about) }}<br>
+                    <textarea style="width: 10000px;  border: 1px solid rgba(0,0,0,0.2)"> {{ item.about }}</textarea><br>
                     {% for error in form.content.errors %}
                         <p content="alert alert-danger" role="alert">
                             {{ error }}

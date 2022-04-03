@@ -287,7 +287,9 @@
               <h4><a href="portfolio-details.html">{{ item.title }}</a></h4>
               <p>{{ item.about }}</p>
               <br>
-              <span class="badge rounded-pill bg-info text-light" style="float:right;">Новинка!</span>
+              {% if item.status %}
+                <span class="badge rounded-pill bg-info text-light" style="float:right;">{{ item.status }}</span>
+              {% endif %}
             </div>
           </div>
 <!--          <div class="col-xl-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">-->
