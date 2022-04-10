@@ -19,7 +19,7 @@
                 {{ form.title(class="form-control", value=item.title) }}<br>
                 <p>
                     {{ form.content.label }}<br>
-                    <textarea style="width: 10000px;  border: 1px solid rgba(0,0,0,0.2)"> {{ item.about }}</textarea><br>
+                    {{ form.content(class="form-control", width="1000px", col="10", default=item.about) }}<br>
                     {% for error in form.content.errors %}
                         <p content="alert alert-danger" role="alert">
                             {{ error }}
@@ -33,6 +33,11 @@
                 {% endfor %}
             </p>
             <label for="file-input">Приложите фотографию</label><br>
+            {% for error in form.submit.errors %}
+                <p content="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
             <input type="file" class="form-control-file" id="file-input" name="file"><br><br>
             <button type="submit" class="btn btn-primary">Редактировать</button>
         </form>

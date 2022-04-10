@@ -43,15 +43,26 @@ def edit(index):
     db_sess = db_session.create_session()
     item = db_sess.query(Product).get(int(index))
     if request.method == 'GET':
+        print(form.content.default)
+        form.content.default = item.about
+        print(form.content.default)
         return render_template('admin/edit.html', product=product, form=form, item=item)
     elif request.method == 'POST':
+        # if form.title.validate(form):
+        #     print(1)
+        # if form.content.validate(form):
+        #     print(2)
+        # if form.submit.validate(form):
+        #     print(3)
         if form.validate_on_submit():
             f = request.files['file']
             filename = secure_filename(f.filename)
             f.save(f'static/img/product/{filename}')
             if item.title != form.title.data:
                 item.title = form.title.data
-            if form.content.data != item.about:
+            print(form.content.data, item.about)
+            if item.about != form.content.data:
+                print(123)
                 item.about = form.content.data
             if item.image_file_path != filename:
                 item.image_file_path = filename
