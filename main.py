@@ -20,7 +20,7 @@ db_session.global_init("admin/db/assortment.db")
 def baker():
     db_sess = db_session.create_session()
     products = db_sess.query(Product).all()
-    print(products[0].title)
+    # print(products[0].title)
     return render_template('index.html', products=products)
 
 
@@ -42,10 +42,11 @@ def edit(index):
     form = EditForm()
     db_sess = db_session.create_session()
     item = db_sess.query(Product).get(int(index))
+    print(item.status_color)
     if request.method == 'GET':
-        print(form.content.default)
+        # print(form.content.default)
         form.content.default = item.about
-        print(form.content.default)
+        # print(form.content.default)
         return render_template('admin/edit.html', product=product, form=form, item=item)
     elif request.method == 'POST':
         # if form.title.validate(form):
@@ -54,18 +55,20 @@ def edit(index):
         #     print(2)
         # if form.submit.validate(form):
         #     print(3)
+        # a = request.form['about_value']
         if form.validate_on_submit():
             f = request.files['file']
             filename = secure_filename(f.filename)
             f.save(f'static/img/product/{filename}')
-            if item.title != form.title.data:
-                item.title = form.title.data
-            print(form.content.data, item.about)
-            if item.about != form.content.data:
-                print(123)
-                item.about = form.content.data
-            if item.image_file_path != filename:
+            # if item.title != form.title.data:
+            item.title = form.title.data
+            # print(form.content.data, item.about)
+            item.about = request.form['about_value']
+            # if item.image_file_path == 'static/img/product/':
+            print(request.form['file'])
+            if request.form['file']:
                 item.image_file_path = filename
+                f.save(f'static/img/product/{filename}')
             db_sess.add(item)
             db_sess.commit()
             return redirect("/admin")

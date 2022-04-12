@@ -6,5 +6,5 @@ from wtforms.validators import DataRequired
 
 class EditForm(FlaskForm):
     title = StringField('Название', validators=[DataRequired()])
-    content = TextAreaField("Описание",  validators=[DataRequired()])
+    content = TextAreaField("Описание")
     submit = SubmitField('Применить')

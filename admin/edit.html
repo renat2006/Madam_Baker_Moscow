@@ -19,12 +19,8 @@
                 {{ form.title(class="form-control", value=item.title) }}<br>
                 <p>
                     {{ form.content.label }}<br>
-                    {{ form.content(class="form-control", width="1000px", col="10", default=item.about) }}<br>
-                    {% for error in form.content.errors %}
-                        <p content="alert alert-danger" role="alert">
-                            {{ error }}
-                        </p>
-                    {% endfor %}
+<!--                    {{ form.content(class="form-control", width="1000px", col="10", default=item.about) }}<br>-->
+                    <textarea class="form-control" name="about_value" required>{{ item.about }}</textarea>
                 </p>
                 {% for error in form.title.errors %}
                     <p class="alert alert-danger" role="alert">
@@ -38,7 +34,7 @@
                     {{ error }}
                 </p>
             {% endfor %}
-            <input type="file" class="form-control-file" id="file-input" name="file"><br><br>
+            <input type="file" class="form-control-file" id="file-input" name="file" required><br><br>
             <button type="submit" class="btn btn-primary">Редактировать</button>
         </form>
     </div>
