@@ -65,9 +65,9 @@ def edit(index):
         item.about = request.form['about_value']
         # if item.image_file_path == 'static/img/product/':
         print(request.form['status_select'])
-        if request.form['file']:
-            item.image_file_path = filename
-            f.save(f'static/img/product/{filename}')
+        print(filename)
+        item.image_file_path = filename
+
         if request.form['status_select'] == "Хит":
             item.status = 2
         elif request.form['status_select'] == "Новинка":
