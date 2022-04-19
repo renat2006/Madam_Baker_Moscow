@@ -28,6 +28,11 @@
                     </p>
                 {% endfor %}
             </p>
+               <p><select size="1" name="status_select" required>
+                <option selected value disabled>Выберите подпись</option>
+                <option value="Хит">Хит</option>
+                <option value="Новинка">Новинка</option>
+               </select></p>
             <label for="file-input">Приложите фотографию</label><br>
             {% for error in form.submit.errors %}
                 <p content="alert alert-danger" role="alert">

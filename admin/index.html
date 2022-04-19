@@ -367,6 +367,11 @@
                             src="\static\img\product\{{pr.image_file_path}}" alt="...">
                     </div>
                     <p>{{ pr.about }}</p>
+                    {% if pr.status == 1 %}
+                        <span class="badge rounded-pill bg-info text-light" style="float:right;">Новинка</span>
+                    {% elif pr.status == 2 %}
+                        <span class="badge rounded-pill bg-danger text-light" style="float:right;">Хит</span>
+                    {% endif %}
                     <form method="post">
                         <a href="/edit/{{ pr.id }}" class="btn btn-warning">
                             Изменить

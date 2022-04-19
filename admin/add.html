@@ -32,9 +32,16 @@
                     </p>
                 {% endfor %}
             </p>
+            <form action="" method="post">
+               <p><select size="1" name="status_select" required>
+                <option selected value disabled>Выберите подпись</option>
+                <option value="Хит">Хит</option>
+                <option value="Новинка">Новинка</option>
+               </select></p>
             <label for="file-input">Приложите фотографию</label><br>
             <input type="file" class="form-control-file" id="file-input" name="file" required><br><br>
             <button type="submit" class="btn btn-primary">Добавить</button>
+            </form>
         </form>
     </div>
 </body>

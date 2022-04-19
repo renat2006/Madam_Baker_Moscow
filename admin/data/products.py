@@ -13,5 +13,5 @@ class Product(SqlAlchemyBase):
     about = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     image_file_path = sqlalchemy.Column(sqlalchemy.String,
                               index=True, unique=True, nullable=True)
-    status = sqlalchemy.Column(sqlalchemy.String, nullable=True)
+    status = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
     status_color = sqlalchemy.Column(sqlalchemy.String, nullable=True)

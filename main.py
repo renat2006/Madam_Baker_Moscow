@@ -42,8 +42,8 @@ def edit(index):
     form = EditForm()
     db_sess = db_session.create_session()
     item = db_sess.query(Product).get(int(index))
-    print(item.status_color)
     if request.method == 'GET':
+        # print(request.form['status_select'])
         # print(form.content.default)
         form.content.default = item.about
         # print(form.content.default)
@@ -56,23 +56,26 @@ def edit(index):
         # if form.submit.validate(form):
         #     print(3)
         # a = request.form['about_value']
-        if form.validate_on_submit():
-            f = request.files['file']
-            filename = secure_filename(f.filename)
+        f = request.files['file']
+        filename = secure_filename(f.filename)
+        f.save(f'static/img/product/{filename}')
+        # if item.title != form.title.data:
+        item.title = form.title.data
+        # print(form.content.data, item.about)
+        item.about = request.form['about_value']
+        # if item.image_file_path == 'static/img/product/':
+        print(request.form['status_select'])
+        if request.form['file']:
+            item.image_file_path = filename
             f.save(f'static/img/product/{filename}')
-            # if item.title != form.title.data:
-            item.title = form.title.data
-            # print(form.content.data, item.about)
-            item.about = request.form['about_value']
-            # if item.image_file_path == 'static/img/product/':
-            print(request.form['file'])
-            if request.form['file']:
-                item.image_file_path = filename
-                f.save(f'static/img/product/{filename}')
-            db_sess.add(item)
-            db_sess.commit()
-            return redirect("/admin")
-        return render_template("404.html")
+        if request.form['status_select'] == "Хит":
+            item.status = 2
+        elif request.form['status_select'] == "Новинка":
+            item.status = 1
+        db_sess.add(item)
+        db_sess.commit()
+        return redirect("/admin")
+    return render_template("404.html")
 
 
 @app.route('/delete/<index>', methods=['GET', 'POST'])
@@ -91,6 +94,7 @@ def add():
         return render_template('admin/add.html', product=product, form=form)
     elif request.method == 'POST':
         if form.validate_on_submit():
+            # print(request.form['status_select'])
             f = request.files['file']
             filename = secure_filename(f.filename)
             f.save(f'static/img/product/{filename}')
@@ -99,6 +103,10 @@ def add():
             item.title = form.title.data
             item.about = form.content.data
             item.image_file_path = filename
+            if request.form['status_select'] == "Хит":
+                item.status = 2
+            elif request.form['status_select'] == "Новинка":
+                item.status = 1
             db_sess.add(item)
             db_sess.commit()
             return redirect("/admin")
