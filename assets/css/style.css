@@ -418,13 +418,21 @@ margin-top: 30px;
   }
 }
 @media (max-width: 575px) {
+
   #hero .hero-img img {
     width: 80%;
   }
   #hero .btn-get-started {
+
     font-size: 16px;
     padding: 10px 24px 11px 24px;
   }
+}
+@media (max-width: 1000px) {
+  #hero{
+    height: 125%;
+  }
+
 }
 
 @-webkit-keyframes up-down {
