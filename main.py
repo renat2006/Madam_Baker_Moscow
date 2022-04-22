@@ -10,18 +10,18 @@ from werkzeug.utils import secure_filename
 from admin.edit_form import EditForm
 from admin.add_form import AddForm
 
-app = Flask(__name__, template_folder=".")
-app.config['SECRET_KEY'] = 'baker_admin_secret_key'
+application = Flask(__name__, template_folder=".")
+application.config['SECRET_KEY'] = 'baker_admin_secret_key'
 
 db_session.global_init("admin/db/assortment.db")
 
 
-@app.route('/', methods=['GET', 'POST'])
+@application.route('/', methods=['GET', 'POST'])
 def baker():
     db_sess = db_session.create_session()
     products = db_sess.query(Product).all()
     # print(products[0].title)
-    return render_template('index.html', products=products)
+    return render_template('main.html', products=products)
 
 
 db_session.global_init("admin/db/assortment.db")
@@ -30,14 +30,14 @@ db_sess = db_session.create_session()
 product = db_sess.query(Product).all()
 
 
-@app.route('/admin', methods=['GET', 'POST'])
+@application.route('/admin', methods=['GET', 'POST'])
 def admin():
     db_sess = db_session.create_session()
     product = db_sess.query(Product).all()
     return render_template('admin/index.html', product=product)
 
 
-@app.route('/edit/<index>', methods=['GET', 'POST'])
+@application.route('/edit/<index>', methods=['GET', 'POST'])
 def edit(index):
     form = EditForm()
     db_sess = db_session.create_session()
@@ -78,7 +78,7 @@ def edit(index):
     return render_template("404.html")
 
 
-@app.route('/delete/<index>', methods=['GET', 'POST'])
+@application.route('/delete/<index>', methods=['GET', 'POST'])
 def delete(index):
     db_sess = db_session.create_session()
     item = db_sess.query(Product).get(int(index))
@@ -87,7 +87,7 @@ def delete(index):
     return redirect("/admin")
 
 
-@app.route('/add', methods=['GET', 'POST'])
+@application.route('/add', methods=['GET', 'POST'])
 def add():
     form = AddForm()
     if request.method == 'GET':
@@ -114,7 +114,7 @@ def add():
 
 
 def main():
-    app.run()
+    application.run(host='0.0.0.0')
 
 
 if __name__ == '__main__':
