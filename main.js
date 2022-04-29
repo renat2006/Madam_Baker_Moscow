@@ -16,7 +16,9 @@ $('.contact-form').on('submit', function (event) {
     data.append( 'Имя', 		$('[name="name"]', form).val() );
     data.append( 'Телефон', 		$('[name="phone"]', form).val() );
     data.append( 'email', 		$('[name="email"]', form).val() );
+
     data.append( 'Город', 		$('[name="city"]', form).val() );
+    data.append( 'Компания', 		$('[name="company"]', form).val() );
     data.append( 'Сообщение', 		$('[name="text"]', form).val() );
 
 
