@@ -30,6 +30,7 @@ def admin():
 
 @app.route('/edit/<index>', methods=['GET', 'POST'])
 def edit(index):
+    print(111)
     form = EditForm()
     db_sess = db_session.create_session()
     item = db_sess.query(Product).get(int(index))
@@ -38,13 +39,16 @@ def edit(index):
     elif request.method == 'POST':
         if form.validate_on_submit():
             f = request.files['file']
+            print(f.filename)
             filename = secure_filename(f.filename)
-            f.save(f'static/img/product/{filename}')
+            print(filename)
+            print("1234567890")
             if item.title != form.title.data:
                 item.title = form.title.data
             if form.content.data != item.about:
                 item.about = form.content.data
-            if item.image_file_path != filename:
+            if filename:
+                f.save(f'static/img/product/{filename}')
                 item.image_file_path = filename
             db_sess.add(item)
             db_sess.commit()

@@ -66,20 +66,22 @@ def edit(index):
         # a = request.form['about_value']
         f = request.files['file']
         filename = secure_filename(f.filename)
-        f.save(f'static/img/product/{filename}')
+        if filename:
+            f.save(f'static/img/product/{filename}')
+            item.image_file_path = filename
         # if item.title != form.title.data:
         item.title = form.title.data
         # print(form.content.data, item.about)
         item.about = request.form['about_value']
         # if item.image_file_path == 'static/img/product/':
-        print(request.form['status_select'])
-        print(filename)
-        item.image_file_path = filename
-
-        if request.form['status_select'] == "Хит":
-            item.status = 2
-        elif request.form['status_select'] == "Новинка":
-            item.status = 1
+        if request.form['status_select']:
+            print(request.form['status_select'])
+            if request.form['status_select'] == "Хит":
+                item.status = 2
+            elif request.form['status_select'] == "Новинка":
+                item.status = 1
+            else:
+                item.status = None
         db_sess.add(item)
         db_sess.commit()
         return redirect("/admin")
