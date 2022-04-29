@@ -10,13 +10,15 @@
     <meta name="author" content="Madam Baker">
 
     <title>Админ</title>
-
+    <script src="https://cdn.lordicon.com/lusqsztk.js"></script>
 
     <script src="https://use.fontawesome.com/67dbbcf5bb.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
 
 
     <link href="{{ url_for('static',filename='css/sb-admin-2.min.css') }}" rel="stylesheet">
@@ -26,278 +28,333 @@
 <body id="page-top">
 
 
-    <div id="wrapper">
+<div id="wrapper">
 
 
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fa fa-list-alt" aria-hidden="true"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">Админ панель</div>
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fa fa-list-alt" aria-hidden="true"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">Админ панель</div>
+        </a>
+
+
+        <hr class="sidebar-divider my-0">
+
+
+        <li class="nav-item active">
+            <a class="nav-link" href="/admin">
+                <i class="fa-solid fa-cookie"></i>
+                <span>Ассортимент</span></a>
+        </li>
+
+
+        <!-- <div class="sidebar-heading">
+          Инфо
+        </div> -->
+
+
+        <!-- <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Статистика</span>
             </a>
 
+        </li>
 
-            <hr class="sidebar-divider my-0">
-
-
-            <li class="nav-item active">
-                <a class="nav-link" href="/admin">
-                    <i class="fa-solid fa-cookie"></i>
-                    <span>Ассортимент</span></a>
-            </li>
-
-
-
-
-
-            <!-- <div class="sidebar-heading">
-              Инфо
-            </div> -->
-
-
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Статистика</span>
-                </a>
-
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-fw fa-wrench"></i>
+                <span>Utilities</span>
+            </a>
+            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Custom Utilities:</h6>
+                    <a class="collapse-item" href="utilities-color.html">Colors</a>
+                    <a class="collapse-item" href="utilities-border.html">Borders</a>
+                    <a class="collapse-item" href="utilities-animation.html">Animations</a>
+                    <a class="collapse-item" href="utilities-other.html">Other</a>
                 </div>
-            </li>
-
-
-            <hr class="sidebar-divider">
-
-
-            <div class="sidebar-heading">
-                Addons
             </div>
+        </li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
-                    </div>
+
+        <hr class="sidebar-divider">
+
+
+        <div class="sidebar-heading">
+            Addons
+        </div>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Pages</span>
+            </a>
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Login Screens:</h6>
+                    <a class="collapse-item" href="login.html">Login</a>
+                    <a class="collapse-item" href="register.html">Register</a>
+                    <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                    <div class="collapse-divider"></div>
+                    <h6 class="collapse-header">Other Pages:</h6>
+                    <a class="collapse-item" href="404.html">404 Page</a>
+                    <a class="collapse-item" href="blank.html">Blank Page</a>
                 </div>
-            </li>
-
-
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
-
-
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li> -->
-
-
-            <hr class="sidebar-divider d-none d-md-block">
-
-
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
+        </li>
+
+
+        <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Charts</span></a>
+        </li>
+
+
+        <li class="nav-item">
+            <a class="nav-link" href="tables.html">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Tables</span></a>
+        </li> -->
+
+
+        <hr class="sidebar-divider d-none d-md-block">
+
+
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
+
+    </ul>
+
+
+    <!-- End of Topbar -->
+
+    <!-- Begin Page Content -->
+
+
+    <!-- Footer -->
+
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+            <!-- Sidebar Toggle (Topbar) -->
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                <i class="fa fa-bars"></i>
+            </button>
+
+
+                <!-- Topbar Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+          <a class="nav-link active text-info" aria-current="page" href="auth.signup">Регистрация</a>
+        </li>
+                    <li class="nav-item">
+          <a class="nav-link active text-danger" aria-current="page" href="auth.login">Войти</a>
+        </li>
 
 
 
-
-        </ul>
-
+                    <!-- Nav Item - Search Dropdown (Visible Only XS) -->
 
 
-                <!-- End of Topbar -->
+                    <div class="topbar-divider d-none d-sm-block"></div>
 
-                <!-- Begin Page Content -->
+                    <!-- Nav Item - User Information -->
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                            <img class="img-profile rounded-circle"
+                                 src="img/undraw_profile.svg">
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Profile
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Settings
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Activity Log
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </li>
 
+                </ul>
 
-            <!-- Footer -->
-
-            <div class="container-fluid" >
-                <a href="/add" class="add-btn btn btn-success btn-icon-split" style="margin-bottom: 20px;margin-top: 20px;"> <span class="icon text-white-50">
+        </nav>
+        <a href="/add" class="add-btn btn btn-success btn-icon-split"
+           style="margin-bottom: 20px;margin-top: 20px;"> <span class="icon text-white-50">
                                             <i class="fa-solid fa-plus"></i>
                                         </span><span class="text">Добавить</span></a>
 
-              <div class="row">
+        <div class="row">
 
             {% for pr in product %}
-            <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">{{ pr.title }}</h6>
-                </div>
-                <div class="card-body">
-                    <div class="text-center">
-                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                            src="\static\img\product\{{pr.image_file_path}}" alt="...">
-                    </div>
-                    <p>{{ pr.about }}</p>
-                    {% if pr.status == 1 %}
-                        <span class="badge rounded-pill bg-info text-light" style="float:right;">Новинка</span>
-                    {% elif pr.status == 2 %}
-                        <span class="badge rounded-pill bg-danger text-light" style="float:right;">Хит</span>
-                    {% endif %}
-                <br>
-                    <form method="post">
-                        <a href="/edit/{{ pr.id }}" class="add-btn btn btn-warning btn-icon-split" style="margin-bottom: 20px;margin-top: 20px;"> <span class="icon text-white-50">
+                <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">{{ pr.title }}</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                                     src="\static\img\product\{{ pr.image_file_path }}" alt="...">
+                            </div>
+                            <p>{{ pr.about }}</p>
+                            {% if pr.status == 1 %}
+                                <span class="badge rounded-pill bg-info text-light" style="float:right;">Новинка</span>
+                            {% elif pr.status == 2 %}
+                                <span class="badge rounded-pill bg-danger text-light" style="float:right;">Хит</span>
+                            {% endif %}
+                            <br>
+                            <form method="post">
+                                <a href="/edit/{{ pr.id }}" class="add-btn btn btn-warning btn-icon-split"
+                                   style="margin-bottom: 20px;margin-top: 20px;"> <span class="icon text-white-50">
                                             <i class="fa-solid fa-pencil"></i>
                                         </span><span class="text">Изменить</span></a>
-                        <a href="/delete/{{ pr.id }}" class="add-btn btn btn-danger btn-icon-split" style="margin-bottom: 20px;margin-top: 20px;"> <span class="icon text-white-50">
+                                <a href="/delete/{{ pr.id }}" class="add-btn btn btn-danger btn-icon-split"
+                                   style="margin-bottom: 20px;margin-top: 20px;"> <span class="icon text-white-50">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </span><span class="text">Удалить</span></a>
 
 
-                    </form>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            </div>
-        {% endfor %}
-<!--        <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0">-->
-<!--        <div class="card shadow mb-4">-->
-<!--            <div class="card-header py-3">-->
-<!--                <h6 class="m-0 font-weight-bold text-primary">{{ title }}</h6>-->
-<!--            </div>-->
-<!--            <div class="card-body">-->
-<!--                <div class="text-center">-->
-<!--                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"-->
-<!--                        src="../assets/img/product/2.jpg" alt="...">-->
-<!--                </div>-->
-<!--                <p>Add some quality, svg illustrations to your project courtesy of <a-->
-<!--                        target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a-->
-<!--                    constantly updated collection of beautiful svg images that you can use-->
-<!--                    completely free and without attribution!</p>-->
-<!--                <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on-->
-<!--                    unDraw &rarr;</a>-->
-<!--            </div>-->
-<!--        </div>-->
+            {% endfor %}
+            <!--        <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0">-->
+            <!--        <div class="card shadow mb-4">-->
+            <!--            <div class="card-header py-3">-->
+            <!--                <h6 class="m-0 font-weight-bold text-primary">{{ title }}</h6>-->
+            <!--            </div>-->
+            <!--            <div class="card-body">-->
+            <!--                <div class="text-center">-->
+            <!--                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"-->
+            <!--                        src="../assets/img/product/2.jpg" alt="...">-->
+            <!--                </div>-->
+            <!--                <p>Add some quality, svg illustrations to your project courtesy of <a-->
+            <!--                        target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a-->
+            <!--                    constantly updated collection of beautiful svg images that you can use-->
+            <!--                    completely free and without attribution!</p>-->
+            <!--                <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on-->
+            <!--                    unDraw &rarr;</a>-->
+            <!--            </div>-->
+            <!--        </div>-->
 
 
-<!--    </div>-->
-<!--    <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0">-->
-<!--    <div class="card shadow mb-4">-->
-<!--        <div class="card-header py-3">-->
-<!--            <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>-->
-<!--        </div>-->
-<!--        <div class="card-body">-->
-<!--            <div class="text-center">-->
-<!--                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"-->
-<!--                    src="../assets/img/product/3.jpg" alt="...">-->
-<!--            </div>-->
-<!--            <p>Add some quality, svg illustrations to your project courtesy of <a-->
-<!--                    target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a-->
-<!--                constantly updated collection of beautiful svg images that you can use-->
-<!--                completely free and without attribution!</p>-->
-<!--            <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on-->
-<!--                unDraw &rarr;</a>-->
+            <!--    </div>-->
+            <!--    <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0">-->
+            <!--    <div class="card shadow mb-4">-->
+            <!--        <div class="card-header py-3">-->
+            <!--            <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>-->
+            <!--        </div>-->
+            <!--        <div class="card-body">-->
+            <!--            <div class="text-center">-->
+            <!--                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"-->
+            <!--                    src="../assets/img/product/3.jpg" alt="...">-->
+            <!--            </div>-->
+            <!--            <p>Add some quality, svg illustrations to your project courtesy of <a-->
+            <!--                    target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a-->
+            <!--                constantly updated collection of beautiful svg images that you can use-->
+            <!--                completely free and without attribution!</p>-->
+            <!--            <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on-->
+            <!--                unDraw &rarr;</a>-->
         </div>
     </div>
 
 
-<!--</div>-->
-<!--<div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0">-->
-<!--<div class="card shadow mb-4">-->
-<!--    <div class="card-header py-3">-->
-<!--        <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>-->
-<!--    </div>-->
-<!--    <div class="card-body">-->
-<!--        <div class="text-center">-->
-<!--            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"-->
-<!--                src="../assets/img/product/4.jpg" alt="...">-->
-<!--        </div>-->
-<!--        <p>Add some quality, svg illustrations to your project courtesy of <a-->
-<!--                target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a-->
-<!--            constantly updated collection of beautiful svg images that you can use-->
-<!--            completely free and without attribution!</p>-->
-<!--        <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on-->
-<!--            unDraw &rarr;</a>-->
-<!--    </div>-->
-<!--</div>-->
+    <!--</div>-->
+    <!--<div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0">-->
+    <!--<div class="card shadow mb-4">-->
+    <!--    <div class="card-header py-3">-->
+    <!--        <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>-->
+    <!--    </div>-->
+    <!--    <div class="card-body">-->
+    <!--        <div class="text-center">-->
+    <!--            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"-->
+    <!--                src="../assets/img/product/4.jpg" alt="...">-->
+    <!--        </div>-->
+    <!--        <p>Add some quality, svg illustrations to your project courtesy of <a-->
+    <!--                target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a-->
+    <!--            constantly updated collection of beautiful svg images that you can use-->
+    <!--            completely free and without attribution!</p>-->
+    <!--        <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on-->
+    <!--            unDraw &rarr;</a>-->
+    <!--    </div>-->
+    <!--</div>-->
 
 
 </div>
-        </div>
-        <!-- End of Content Wrapper -->
+</div>
+<!-- End of Content Wrapper -->
 
-    </div>
-    <!-- End of Page Wrapper -->
+</div>
+<!-- End of Page Wrapper -->
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="login.html">Logout</a>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="{{ url_for('static', filename='vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+<!-- Core plugin JavaScript-->
+<script src="{{ url_for('static', filename='vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="{{ url_for('static', filename='js/sb-admin-2.min.js') }}"></script>
+<!-- Custom scripts for all pages-->
+<script src="{{ url_for('static', filename='js/sb-admin-2.min.js') }}"></script>
 
-    <!-- Page level plugins -->
-    <script src="{{ url_for('static', filename='vendor/chart.js/Chart.min.js') }}"></script>
+<!-- Page level plugins -->
+<script src="{{ url_for('static', filename='vendor/chart.js/Chart.min.js') }}"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="{{ url_for('static', filename='js/demo/chart-area-demo.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/demo/chart-pie-demo.js') }}"></script>
+<!-- Page level custom scripts -->
+<script src="{{ url_for('static', filename='js/demo/chart-area-demo.js') }}"></script>
+<script src="{{ url_for('static', filename='js/demo/chart-pie-demo.js') }}"></script>
 
 </body>
 

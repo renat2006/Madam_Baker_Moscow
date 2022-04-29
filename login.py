@@ -11,10 +11,10 @@ app.config['SECRET_KEY'] = 'cairocoders-ednalan'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=10)
 CORS(app)
 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'testingdb'
+app.config['MYSQL_HOST'] = '31.31.198.124'
+app.config['MYSQL_USER'] = 'u1635912_default'
+app.config['MYSQL_PASSWORD'] = 'Vv8B2y7UkpIOeJa0'
+app.config['MYSQL_DB'] = 'u1635912_default'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
 
