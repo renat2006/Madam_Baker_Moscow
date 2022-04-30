@@ -9,19 +9,17 @@ from admin.data.products import Product
 from werkzeug.utils import secure_filename
 from admin.edit_form import EditForm
 from admin.add_form import AddForm
-from flask import Blueprint
 
 
-main = Blueprint('main', __name__)
+
+
 application = Flask(__name__, template_folder=".")
 application.config['SECRET_KEY'] = 'baker_admin_secret_key'
 
 db_session.global_init("admin/db/assortment.db")
 
 
-@application.route('/profile')
-def profile():
-    return 'Profile'
+
 
 
 @application.route('/', methods=['GET', 'POST'])
