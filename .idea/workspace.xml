@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1266b0e-3e12-46bb-8148-1e569c614c29" name="Changes" comment="corrected edit-panel prefinally">
-      <change afterPath="$PROJECT_DIR$/admin/data/users.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/static/img/user.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/user.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/db/assortment.db" beforeDir="false" afterPath="$PROJECT_DIR$/admin/db/assortment.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passenger_wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/passenger_wsgi.py" afterDir="false" />
-    </list>
+    <list default="true" id="a1266b0e-3e12-46bb-8148-1e569c614c29" name="Changes" comment="added authorization" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -164,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651238018136</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added authorization">
+      <created>1651616600770</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1651616600770</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,6 +182,7 @@
     <MESSAGE value="good-looking 2.4" />
     <MESSAGE value="good-looking 2.6" />
     <MESSAGE value="good-looking 2.7" />
-    <option name="LAST_COMMIT_MESSAGE" value="good-looking 2.7" />
+    <MESSAGE value="added authorization" />
+    <option name="LAST_COMMIT_MESSAGE" value="added authorization" />
   </component>
 </project>

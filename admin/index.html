@@ -236,18 +236,18 @@
                                 <span class="badge rounded-pill bg-danger text-light" style="float:right;">Хит</span>
                             {% endif %}
                             <br>
-                            <form method="post">
-                                <a href="/edit/{{ pr.id }}" class="add-btn btn btn-warning btn-icon-split"
-                                   style="margin-bottom: 20px;margin-top: 20px;"> <span class="icon text-white-50">
-                                            <i class="fa-solid fa-pencil"></i>
-                                        </span><span class="text">Изменить</span></a>
-                                <a href="/delete/{{ pr.id }}" class="add-btn btn btn-danger btn-icon-split"
-                                   style="margin-bottom: 20px;margin-top: 20px;"> <span class="icon text-white-50">
-                                            <i class="fa-solid fa-trash-can"></i>
-                                        </span><span class="text">Удалить</span></a>
-
-
-                            </form>
+                            {% if is_authorized %}
+                                <form method="post">
+                                    <a href="/edit/{{ pr.id }}" class="add-btn btn btn-warning btn-icon-split"
+                                       style="margin-bottom: 20px;margin-top: 20px;"> <span class="icon text-white-50">
+                                                <i class="fa-solid fa-pencil"></i>
+                                            </span><span class="text">Изменить</span></a>
+                                    <a href="/delete/{{ pr.id }}" class="add-btn btn btn-danger btn-icon-split"
+                                       style="margin-bottom: 20px;margin-top: 20px;"> <span class="icon text-white-50">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                            </span><span class="text">Удалить</span></a>
+                                </form>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
