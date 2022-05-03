@@ -12,13 +12,13 @@
     <title>Register</title>
 
 
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static',filename='vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
 
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/sb-admin-2.min.css') }}" rel="stylesheet">
 
 </head>
 
@@ -37,39 +37,44 @@
                                 <h1 class="h4 text-gray-900 mb-4">Создать аккаунт!</h1>
                             </div>
                             <form class="user">
+                                {% if login_error %}
+                                    <div class="alert alert-danger" role="alert">
+                                      Аккаунт с таким логином уже существует
+                                    </div>
+                                {% endif %}
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="Имя">
+                                        <input name="name" type="text" class="form-control form-control-user" id="exampleFirstName"
+                                            placeholder="Имя" required>
                                     </div>
 
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email">
+                                    <input name="login" type="text" class="form-control form-control-user" id="exampleInputEmail"
+                                        placeholder="Логин" required>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Пароль">
+                                        <input name="password" type="password" class="form-control form-control-user"
+                                            id="exampleInputPassword" placeholder="Пароль" required>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Повторить пароль">
+                                        <input name="repeat_password" type="password" class="form-control form-control-user"
+                                            id="exampleRepeatPassword" placeholder="Повторить пароль" required>
                                     </div>
                                 </div>
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
+                                {% if password_error %}
+                                    <div class="alert alert-danger" role="alert">
+                                      Пароли не совпадают
+                                    </div>
+                                {% endif %}
+                                <button formmethod="post" class="btn btn-primary btn-user btn-block">
                                     Зарегистрироваться
-                                </a>
-                                <hr>
-
+                                </button>
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="forgot-password.html">Забыли пароль?</a>
-                            </div>
-                            <div class="text-center">
-                                <a class="small" href="login.html">Войти!</a>
+                                <a class="small" href="/login">Войти!</a>
                             </div>
                         </div>
                     </div>
@@ -80,14 +85,14 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static',filename='vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="{{ url_for('static',filename='vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="{{ url_for('static',filename='js/sb-admin-2.min.js') }}"></script>
 
 </body>
 
