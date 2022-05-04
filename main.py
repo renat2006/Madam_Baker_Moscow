@@ -31,8 +31,13 @@ app.config['MYSQL_PASSWORD'] = 'Vv8B2y7UkpIOeJa0'
 app.config['MYSQL_DB'] = 'u1635912_default'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
+is_authorized = False
+username = ""
 
 db_session.global_init("admin/db/assortment.db")
+
+db_sess = db_session.create_session()
+products = db_sess.query(Product).all()
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -43,18 +48,14 @@ def baker():
     return render_template('main.html', products=products)
 
 
-db_session.global_init("admin/db/assortment.db")
-
-db_sess = db_session.create_session()
-product = db_sess.query(Product).all()
-
-
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
+    db_sess = db_session.create_session()
+    products = db_sess.query(Product).all()
     print("huiwihwhifhiwfw")
-    print(session)
+    print(is_authorized)
     name = db_sess.query(User).get(1).name
-    return render_template('admin/index.html', product=product, is_authorized=False)
+    return render_template('admin/index.html', product=products, is_authorized=is_authorized, username=username)
 
 
 @app.route('/edit/<index>', methods=['GET', 'POST'])
@@ -67,7 +68,9 @@ def edit(index):
         # print(form.content.default)
         form.content.default = item.about
         # print(form.content.default)
-        return render_template('admin/edit.html', product=product, form=form, item=item)
+        db_sess = db_session.create_session()
+        products = db_sess.query(Product).all()
+        return render_template('admin/edit.html', product=products, form=form, item=item)
     elif request.method == 'POST':
         # if form.title.validate(form):
         #     print(1)
@@ -111,9 +114,10 @@ def delete(index):
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
+    global products
     form = AddForm()
     if request.method == 'GET':
-        return render_template('admin/add.html', product=product, form=form)
+        return render_template('admin/add.html', product=products, form=form)
     elif request.method == 'POST':
         if form.validate_on_submit():
             # print(request.form['status_select'])
@@ -131,6 +135,8 @@ def add():
                 item.status = 1
             db_sess.add(item)
             db_sess.commit()
+            db_sess = db_session.create_session()
+            products = db_sess.query(Product).all()
             return redirect("/admin")
         return redirect("/")
 
@@ -146,7 +152,11 @@ def login():
         if user:
             if check_password_hash(user.password_hash, _password):
                 print("YES")
-                return render_template('admin/index.html', product=product, is_authorized=True, username=user.name)
+                global is_authorized
+                is_authorized = True
+                global username
+                username = user.name
+                return redirect("/admin")
             else:
                 print("NO")
                 return redirect("/login")
@@ -221,6 +231,13 @@ def register():
     #             return redirect("/login")
     #     return render_template('admin/login.html', error=True)
     # # _password = "123"
+
+
+@app.route('/exit', methods=['GET', 'POST'])
+def exit():
+    global is_authorized
+    is_authorized = False
+    return redirect("/admin")
 
 
 def main():

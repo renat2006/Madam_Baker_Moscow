@@ -50,6 +50,13 @@
                 <i class="fa-solid fa-cookie"></i>
                 <span>Ассортимент</span></a>
         </li>
+            {% if is_authorized %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/exit">
+                        <i class="fa-solid"></i>
+                        <span>Выйти</span></a>
+                </li>
+            {% endif %}
 
 
         <!-- <div class="sidebar-heading">
@@ -211,10 +218,12 @@
                 </ul>
 
         </nav>
-        <a href="/add" class="add-btn btn btn-success btn-icon-split"
-           style="margin-bottom: 20px;margin-top: 20px;"> <span class="icon text-white-50">
-                                            <i class="fa-solid fa-plus"></i>
-                                        </span><span class="text">Добавить</span></a>
+        {% if is_authorized %}
+            <a href="/add" class="add-btn btn btn-success btn-icon-split"
+               style="margin-bottom: 20px;margin-top: 20px;"> <span class="icon text-white-50">
+                                <i class="fa-solid fa-plus"></i>
+                            </span><span class="text">Добавить</span></a>
+        {% endif %}
 
         <div class="row">
 
