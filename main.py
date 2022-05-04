@@ -35,9 +35,6 @@ mysql = MySQL(app)
 db_session.global_init("admin/db/assortment.db")
 
 
-
-
-
 @app.route('/', methods=['GET', 'POST'])
 def baker():
     db_sess = db_session.create_session()
