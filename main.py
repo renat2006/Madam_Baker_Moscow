@@ -61,85 +61,88 @@ def admin():
 
 @app.route('/edit/<index>', methods=['GET', 'POST'])
 def edit(index):
-    form = EditForm()
-    db_sess = db_session.create_session()
-    item = db_sess.query(Product).get(int(index))
-    if request.method == 'GET':
-        # print(request.form['status_select'])
-        # print(form.content.default)
-        form.content.default = item.about
-        # print(form.content.default)
+    if is_authorized:
+        form = EditForm()
         db_sess = db_session.create_session()
-        products = db_sess.query(Product).all()
-        return render_template('admin/edit.html', product=products, form=form, item=item)
-    elif request.method == 'POST':
-        # if form.title.validate(form):
-        #     print(1)
-        # if form.content.validate(form):
-        #     print(2)
-        # if form.submit.validate(form):
-        #     print(3)
-        # a = request.form['about_value']
-        f = request.files['file']
-        filename = secure_filename(f.filename)
-        if filename:
-            f.save(f'static/img/product/{filename}')
-            item.image_file_path = filename
-        # if item.title != form.title.data:
-        item.title = form.title.data
-        # print(form.content.data, item.about)
-        item.about = request.form['about_value']
-        # if item.image_file_path == 'static/img/product/':
-        if request.form['status_select']:
-            print(request.form['status_select'])
-            if request.form['status_select'] == "Хит":
-                item.status = 2
-            elif request.form['status_select'] == "Новинка":
-                item.status = 1
-            else:
-                item.status = None
-        db_sess.add(item)
-        db_sess.commit()
-        return redirect("/admin")
-    return render_template("404.html")
+        item = db_sess.query(Product).get(int(index))
+        if request.method == 'GET':
+            # print(request.form['status_select'])
+            # print(form.content.default)
+            form.content.default = item.about
+            # print(form.content.default)
+            db_sess = db_session.create_session()
+            products = db_sess.query(Product).all()
+            return render_template('admin/edit.html', product=products, form=form, item=item)
+        elif request.method == 'POST':
+            # if form.title.validate(form):
+            #     print(1)
+            # if form.content.validate(form):
+            #     print(2)
+            # if form.submit.validate(form):
+            #     print(3)
+            # a = request.form['about_value']
+            f = request.files['file']
+            filename = secure_filename(f.filename)
+            if filename:
+                f.save(f'static/img/product/{filename}')
+                item.image_file_path = filename
+            # if item.title != form.title.data:
+            item.title = form.title.data
+            # print(form.content.data, item.about)
+            item.about = request.form['about_value']
+            # if item.image_file_path == 'static/img/product/':
+            if request.form['status_select']:
+                print(request.form['status_select'])
+                if request.form['status_select'] == "Хит":
+                    item.status = 2
+                elif request.form['status_select'] == "Новинка":
+                    item.status = 1
+                else:
+                    item.status = None
+            db_sess.add(item)
+            db_sess.commit()
+            return redirect("/admin")
+        return render_template("404.html")
 
 
 @app.route('/delete/<index>', methods=['GET', 'POST'])
 def delete(index):
-    db_sess = db_session.create_session()
-    item = db_sess.query(Product).get(int(index))
-    db_sess.delete(item)
-    db_sess.commit()
-    return redirect("/admin")
+    if is_authorized:
+        db_sess = db_session.create_session()
+        item = db_sess.query(Product).get(int(index))
+        db_sess.delete(item)
+        db_sess.commit()
+        return redirect("/admin")
 
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
-    global products
-    form = AddForm()
-    if request.method == 'GET':
-        return render_template('admin/add.html', product=products, form=form)
-    elif request.method == 'POST':
-        if form.validate_on_submit():
-            # print(request.form['status_select'])
-            f = request.files['file']
-            filename = secure_filename(f.filename)
-            f.save(f'static/img/product/{filename}')
-            db_sess = db_session.create_session()
-            item = Product()
-            item.title = form.title.data
-            item.about = form.content.data
-            item.image_file_path = filename
-            if request.form['status_select'] == "Хит":
-                item.status = 2
-            elif request.form['status_select'] == "Новинка":
-                item.status = 1
-            db_sess.add(item)
-            db_sess.commit()
-            db_sess = db_session.create_session()
-            products = db_sess.query(Product).all()
-            return redirect("/admin")
-        return redirect("/")
+    if is_authorized:
+        global products
+        form = AddForm()
+        if request.method == 'GET':
+            return render_template('admin/add.html', product=products, form=form)
+        elif request.method == 'POST':
+            if form.validate_on_submit():
+                # print(request.form['status_select'])
+                f = request.files['file']
+                filename = secure_filename(f.filename)
+                f.save(f'static/img/product/{filename}')
+                db_sess = db_session.create_session()
+                item = Product()
+                item.title = form.title.data
+                item.about = form.content.data
+                item.image_file_path = filename
+                if request.form['status_select'] == "Хит":
+                    item.status = 2
+                elif request.form['status_select'] == "Новинка":
+                    item.status = 1
+                db_sess.add(item)
+                db_sess.commit()
+                db_sess = db_session.create_session()
+                products = db_sess.query(Product).all()
+                return redirect("/admin")
+            return redirect("/")
 
 
 @app.route('/login', methods=['GET', 'POST'])
