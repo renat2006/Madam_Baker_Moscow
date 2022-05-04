@@ -18,9 +18,11 @@
 
 * [main.py](https://github.com/renat2006/Madam_Baker_Moscow/blob/master/main.py) <br>  
   ___Это основной файл, в нём происходит запуск программы___
+  
 * [static](https://github.com/renat2006/Madam_Baker_Moscow/tree/realise/static) <br>  
   ___Здесь хранятся вспомогательные и стилевые файлы, а также анимации и др___
-* [in_game_menu.py](https://github.com/renat2006/Madam_Baker_Moscow/tree/realise/admin) <br>  
+  
+* [admin](https://github.com/renat2006/Madam_Baker_Moscow/tree/realise/admin) <br>  
   ___Панель администратора___
 
 
