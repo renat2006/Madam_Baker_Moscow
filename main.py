@@ -1,3 +1,5 @@
+import random
+
 from flask import Flask, render_template, url_for
 from admin.data import db_session
 from admin.data.products import Product
@@ -8,6 +10,7 @@ from admin.data import db_session
 from flask import session
 from admin.data.products import Product
 from admin.data.users import User
+from admin.data.invite_word import Invite
 from werkzeug.utils import secure_filename
 from admin.edit_form import EditForm
 from admin.add_form import AddForm
@@ -16,8 +19,6 @@ from flask_cors import CORS  # pip install -U flask-cors
 from datetime import timedelta
 from flask_mysqldb import MySQL, MySQLdb
 from sqlalchemy.exc import IntegrityError
-
-
 
 app = Flask(__name__, template_folder=".")
 app.config['SECRET_KEY'] = 'baker_admin_secret_key'
@@ -192,6 +193,25 @@ def login():
     #     return resp
 
 
+@app.route('/code', methods=['GET', 'POST'])
+def code():
+    global is_authorized
+    db_sess = db_session.create_session()
+    item = db_sess.query(Invite).get(1)
+
+    if request.method == 'POST':
+        chars = list('abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')
+
+        random.shuffle(chars)
+        pasw = ''.join([random.choice(chars) for i in range(7)])
+
+        item.invite_word = pasw
+        db_sess.add(item)
+        db_sess.commit()
+        return redirect("/code")
+    return render_template('admin/code.html', is_authorized=is_authorized, code=item.invite_word)
+
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'GET':
@@ -201,10 +221,13 @@ def register():
         _password = request.form['password']
         _repeat_password = request.form['repeat_password']
         _name = request.form['name']
-        print(_password)
-        print(_repeat_password)
+        _code = request.form['code']
+        right_code = db_sess.query(Invite).get(1)
+        print(_code, right_code)
         if _repeat_password != _password:
-            return render_template('admin/register.html', password_error=True, login_error=False)
+            return render_template('admin/register.html', password_error=True, login_error=False, code_error=False)
+        elif _code != right_code.invite_word:
+            return render_template('admin/register.html', password_error=False, login_error=False, code_error=True)
         else:
             try:
                 new_user = User()

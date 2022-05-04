@@ -39,7 +39,7 @@
                             <form class="user">
                                 {% if login_error %}
                                     <div class="alert alert-danger" role="alert">
-                                      Аккаунт с таким логином уже существует
+                                      Аккаунт с таким логином уже существует!
                                     </div>
                                 {% endif %}
                                 <div class="form-group row">
@@ -53,6 +53,15 @@
                                     <input name="login" type="text" class="form-control form-control-user" id="exampleInputEmail"
                                         placeholder="Логин" required>
                                 </div>
+                            <div class="form-group">
+                                    <input name="code" type="code" class="form-control form-control-user" id="exampleInputEmail"
+                                        placeholder="Код доступа" required>
+                                </div>
+                            {% if code_error %}
+                                    <div class="alert alert-danger" role="alert">
+                                      Код не действителен!
+                                    </div>
+                                {% endif %}
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input name="password" type="password" class="form-control form-control-user"
@@ -65,7 +74,7 @@
                                 </div>
                                 {% if password_error %}
                                     <div class="alert alert-danger" role="alert">
-                                      Пароли не совпадают
+                                      Пароли не совпадают!
                                     </div>
                                 {% endif %}
                                 <button formmethod="post" class="btn btn-primary btn-user btn-block">
