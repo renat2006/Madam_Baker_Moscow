@@ -52,6 +52,11 @@
                         <option value="Пусто">Пусто</option>
                         <option selected value="Хит">Хит</option>
                         <option value="Новинка">Новинка</option>
+                   {% elif item.status == 404 %}
+                        <option value disabled>Выберите подпись</option>
+                        <option selected value="Пусто">Пусто</option>
+                        <option value="Хит">Хит</option>
+                        <option value="Новинка">Новинка</option>
                    {% endif %}
                </select></p>
 

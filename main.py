@@ -15,23 +15,15 @@ from werkzeug.utils import secure_filename
 from admin.edit_form import EditForm
 from admin.add_form import AddForm
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_cors import CORS  # pip install -U flask-cors
+
 from datetime import timedelta
-from flask_mysqldb import MySQL, MySQLdb
+
 from sqlalchemy.exc import IntegrityError
 
-app = Flask(__name__, template_folder=".")
-app.config['SECRET_KEY'] = 'baker_admin_secret_key'
+application = Flask(__name__, template_folder=".")
+application.config['SECRET_KEY'] = 'baker_admin_secret_key'
 
-app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=10)
-CORS(app)
 
-app.config['MYSQL_HOST'] = '31.31.198.124'
-app.config['MYSQL_USER'] = 'u1635912_default'
-app.config['MYSQL_PASSWORD'] = 'Vv8B2y7UkpIOeJa0'
-app.config['MYSQL_DB'] = 'u1635912_default'
-app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
-mysql = MySQL(app)
 is_authorized = False
 username = ""
 
@@ -41,7 +33,7 @@ db_sess = db_session.create_session()
 products = db_sess.query(Product).all()
 
 
-@app.route('/', methods=['GET', 'POST'])
+@application.route('/', methods=['GET', 'POST'])
 def baker():
     db_sess = db_session.create_session()
     products = db_sess.query(Product).all()
@@ -49,17 +41,17 @@ def baker():
     return render_template('main.html', products=products)
 
 
-@app.route('/admin', methods=['GET', 'POST'])
+@application.route('/admin', methods=['GET', 'POST'])
 def admin():
     db_sess = db_session.create_session()
     products = db_sess.query(Product).all()
     print("huiwihwhifhiwfw")
     print(is_authorized)
-    name = db_sess.query(User).get(1).name
+
     return render_template('admin/index.html', product=products, is_authorized=is_authorized, username=username)
 
 
-@app.route('/edit/<index>', methods=['GET', 'POST'])
+@application.route('/edit/<index>', methods=['GET', 'POST'])
 def edit(index):
     if is_authorized:
         form = EditForm()
@@ -98,14 +90,14 @@ def edit(index):
                 elif request.form['status_select'] == "Новинка":
                     item.status = 1
                 else:
-                    item.status = None
+                    item.status = 404
             db_sess.add(item)
             db_sess.commit()
             return redirect("/admin")
         return render_template("404.html")
 
 
-@app.route('/delete/<index>', methods=['GET', 'POST'])
+@application.route('/delete/<index>', methods=['GET', 'POST'])
 def delete(index):
     if is_authorized:
         db_sess = db_session.create_session()
@@ -115,7 +107,7 @@ def delete(index):
         return redirect("/admin")
 
 
-@app.route('/add', methods=['GET', 'POST'])
+@application.route('/add', methods=['GET', 'POST'])
 def add():
     if is_authorized:
         global products
@@ -137,6 +129,8 @@ def add():
                     item.status = 2
                 elif request.form['status_select'] == "Новинка":
                     item.status = 1
+                elif request.form['status_select'] == "Пусто":
+                    item.status = 404
                 db_sess.add(item)
                 db_sess.commit()
                 db_sess = db_session.create_session()
@@ -145,7 +139,7 @@ def add():
             return redirect("/")
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@application.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
         return render_template('admin/login.html', error=False)
@@ -196,7 +190,7 @@ def login():
     #     return resp
 
 
-@app.route('/code', methods=['GET', 'POST'])
+@application.route('/code', methods=['GET', 'POST'])
 def code():
     global is_authorized
     db_sess = db_session.create_session()
@@ -215,7 +209,7 @@ def code():
     return render_template('admin/code.html', is_authorized=is_authorized, code=item.invite_word)
 
 
-@app.route('/register', methods=['GET', 'POST'])
+@application.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'GET':
         return render_template('admin/register.html', password_error=False, login_error=False)
@@ -259,7 +253,7 @@ def register():
     # # _password = "123"
 
 
-@app.route('/exit', methods=['GET', 'POST'])
+@application.route('/exit', methods=['GET', 'POST'])
 def exit():
     global is_authorized
     is_authorized = False
@@ -267,7 +261,7 @@ def exit():
 
 
 def main():
-    app.run(host='0.0.0.0')
+    application.run(host='0.0.0.0')
 
 
 if __name__ == '__main__':
