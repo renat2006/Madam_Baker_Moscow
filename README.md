@@ -1,6 +1,4 @@
 # Madam_Baker_Moscow
-Пояснительная записка:
-Заставка
 ![1](https://user-images.githubusercontent.com/92933233/166927216-d258dd4f-94ff-46f5-9261-9dd8b5988ac6.png)
 
 О нас
