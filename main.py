@@ -1,11 +1,12 @@
+import datetime
 import random
 
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, make_response
 from admin.data import db_session
 from admin.data.products import Product
 import csv
 import os
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 from admin.data import db_session
 from flask import session
 from admin.data.products import Product
@@ -22,10 +23,10 @@ from sqlalchemy.exc import IntegrityError
 
 application = Flask(__name__, template_folder=".")
 application.config['SECRET_KEY'] = 'baker_admin_secret_key'
+application.permanent_session_lifetime = datetime.timedelta(days=365)
 
 
-is_authorized = False
-username = ""
+
 
 db_session.global_init("admin/db/assortment.db")
 
@@ -43,17 +44,21 @@ def baker():
 
 @application.route('/admin', methods=['GET', 'POST'])
 def admin():
+    session.permanent = True
+    if not('is_authorized' in session):
+        session['is_authorized'] = 0
+
     db_sess = db_session.create_session()
     products = db_sess.query(Product).all()
-    print("huiwihwhifhiwfw")
-    print(is_authorized)
 
-    return render_template('admin/index.html', product=products, is_authorized=is_authorized, username=username)
+
+
+    return render_template('admin/index.html', product=products, is_authorized=session.get('is_authorized'), username=session.get('username'))
 
 
 @application.route('/edit/<index>', methods=['GET', 'POST'])
 def edit(index):
-    if is_authorized:
+    if session.get('is_authorized'):
         form = EditForm()
         db_sess = db_session.create_session()
         item = db_sess.query(Product).get(int(index))
@@ -74,7 +79,8 @@ def edit(index):
             #     print(3)
             # a = request.form['about_value']
             f = request.files['file']
-            filename = secure_filename(f.filename)
+            print(f.filename)
+            filename = f.filename
             if filename:
                 f.save(f'static/img/product/{filename}')
                 item.image_file_path = filename
@@ -99,7 +105,7 @@ def edit(index):
 
 @application.route('/delete/<index>', methods=['GET', 'POST'])
 def delete(index):
-    if is_authorized:
+    if session.get('is_authorized'):
         db_sess = db_session.create_session()
         item = db_sess.query(Product).get(int(index))
         db_sess.delete(item)
@@ -109,7 +115,7 @@ def delete(index):
 
 @application.route('/add', methods=['GET', 'POST'])
 def add():
-    if is_authorized:
+    if session.get('is_authorized'):
         global products
         form = AddForm()
         if request.method == 'GET':
@@ -150,11 +156,12 @@ def login():
         if user:
             if check_password_hash(user.password_hash, _password):
                 print("YES")
-                global is_authorized
-                is_authorized = True
-                global username
-                username = user.name
-                return redirect("/admin")
+
+                session['is_authorized'] = 1
+
+                session['username'] = user.name
+
+                return redirect('/admin')
             else:
                 print("NO")
                 return redirect("/login")
@@ -192,7 +199,7 @@ def login():
 
 @application.route('/code', methods=['GET', 'POST'])
 def code():
-    global is_authorized
+
     db_sess = db_session.create_session()
     item = db_sess.query(Invite).get(1)
 
@@ -206,7 +213,7 @@ def code():
         db_sess.add(item)
         db_sess.commit()
         return redirect("/code")
-    return render_template('admin/code.html', is_authorized=is_authorized, code=item.invite_word)
+    return render_template('admin/code.html', is_authorized=session.get('is_authorized'), code=item.invite_word)
 
 
 @application.route('/register', methods=['GET', 'POST'])
@@ -255,8 +262,7 @@ def register():
 
 @application.route('/exit', methods=['GET', 'POST'])
 def exit():
-    global is_authorized
-    is_authorized = False
+    session['is_authorized'] = 0
     return redirect("/admin")
 
 

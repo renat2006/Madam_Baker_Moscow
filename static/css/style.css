@@ -745,14 +745,24 @@ section {
 /*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/
+.service-card {
+
+
+}
 .services .icon-box {
+  border-radius: 10px;
   box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.1);
   padding: 50px 30px;
   transition: all ease-in-out 0.4s;
   background: #fff;
   margin-bottom: 50px;
 }
+.services .icon-box img{
+  border-radius: 10px;
+}
+
 .services .icon-box .icon {
+
   margin-bottom: 10px;
 }
 .services .icon-box .icon i {
@@ -786,11 +796,12 @@ section {
   max-width: 300px;
   max-height: 300px;
 }
+
 /*--------------------------------------------------------------
 # Cta
 --------------------------------------------------------------*/
 .cta {
-  background: linear-gradient(rgba(47, 107, 104, 0.9), rgba(47, 107, 104, 0.9)), url("../img/cta-bg.jpg") fixed center center;
+  background: linear-gradient(rgba(47, 107, 104, 0.9), rgba(47, 107, 104, 0.9)), url("../img/cta-bg.png") fixed center center;
   background-size: cover;
   padding: 120px 0;
 }

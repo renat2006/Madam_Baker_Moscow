@@ -34,7 +34,7 @@
   <link href="{{ url_for('static', filename='vendor/remixicon/remixicon.css')}}" rel="stylesheet">
   <link href="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" integrity="sha384-ejwKkLla8gPP8t2u0eQyL0Q/4ItcnyveF505U0NIobD/SMsNyXrLti6CWaD0L52l" crossorigin="anonymous">
-
+<script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
   <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet">
 
   <!-- Yandex.Metrika counter -->
@@ -65,7 +65,7 @@
       <div class="container d-flex align-items-center">
 
 
-        <a href="index.html" class="logo me-auto"><img class="logo-im" src="assets\img\favicon.png" alt="" class="img-fluid"></a>
+        <a href="index.html" class="logo me-auto"><img class="logo-im" src="static\img\favicon.png" alt="" class="img-fluid"></a>
 
         <nav id="navbar" class="navbar">
           <ul>
@@ -77,7 +77,7 @@
             <li><a class="nav-link scrollto" href="#contact">Связаться</a></li>
             <li><a class="getstarted scrollto" href="#contact">Получить прайс</a></li>
           </ul>
-          <i class="bi bi-list mobile-nav-toggle"></i>
+          <i class="bi mobile-nav-toggle bi-list"></i>
         </nav>
       </div>
     </div>
@@ -296,10 +296,10 @@
 
          <div class="row">
           {% for item in products %}
-          <div class="col-xl-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-xl-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay={{ loop.index * 100 }}>
             <div class="icon-box">
               <div class="icon"><img class="product" src="static/img/product/{{item.image_file_path}}" alt=""></div>
-              <h4><a href="portfolio-details.html">{{ item.title }}</a></h4>
+              <h4><a>{{ item.title }}</a></h4>
               <p>{{ item.about }}</p>
               <br>
               {% if item.status == 1 %}
