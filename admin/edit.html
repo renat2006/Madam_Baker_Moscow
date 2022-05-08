@@ -68,7 +68,7 @@
             <div class="mb-3">
 
   <label for="file-input" class="form-control-file form-label">Выбрать другое изображение</label>
-  <input class="form-control" accept="image/*" type="file" id="file_input" name="file">
+  <input class="form-control" accept="image/*" type="file" id="file_input"  multiple="multiple" name="files[]">
 
 
                 <div class="d-flex align-items-stretch " style="margin-top: 30px;">
@@ -79,7 +79,7 @@
                                 <div class="card-body">
                                    <div class="text-center">
                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                            src="..\static\img\product\{{item.image_file_path}}" id="pic" alt="">
+                            src="..\static\img\product\{{item.image_file_path.split("; ")[0]}}" id="pic" alt="">
                     </div>
                                 </div>
                             </div>

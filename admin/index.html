@@ -10,6 +10,10 @@
     <meta name="author" content="Madam Baker">
 
     <title>Админ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
     <script src="https://cdn.lordicon.com/lusqsztk.js"></script>
 
     <script src="https://use.fontawesome.com/67dbbcf5bb.js"></script>
@@ -26,7 +30,9 @@
 </head>
 
 <body id="page-top">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <div id="wrapper">
 
@@ -244,8 +250,15 @@
                         </div>
                         <div class="card-body">
                             <div class="text-center">
-                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                     src="\static\img\product\{{ pr.image_file_path }}" alt="...">
+                                <div class="owl-carousel owl-theme" style="max-width: 400px;">
+                            {% for im in pr.image_file_path.split("; ") %}
+    <div class="item"><img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                                     src="\static\img\product\{{ im }}" alt="..."></div>
+                                {% endfor %}
+
+
+</div>
+
                             </div>
                             <p>{{ pr.about }}</p>
                             {% if pr.status == 1 %}
@@ -309,7 +322,15 @@
             <!--                unDraw &rarr;</a>-->
         </div>
     </div>
+<script>
+    $('.owl-carousel').owlCarousel({
+    margin:10,
+    loop:true,
 
+    items:1
+
+});
+</script>
 
     <!--</div>-->
     <!--<div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0">-->

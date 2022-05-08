@@ -429,6 +429,10 @@ margin-top: 30px;
   }
 }
 @media (max-width: 1000px) {
+  .services .icon-box img {
+    max-width: 290px;
+    max-height: 290px;
+  }
   #hero{
     height: 125%;
   }
@@ -793,8 +797,8 @@ section {
   color: #3E8C88;
 }
 .services .icon-box img {
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 355px;
+  max-height: 355px;
 }
 
 /*--------------------------------------------------------------
@@ -836,6 +840,7 @@ section {
   }
 }
 @media (min-width: 769px) {
+
   .cta .cta-btn-container {
     display: flex;
     align-items: center;
@@ -1156,6 +1161,7 @@ section {
   }
 }
 @media (max-width: 767px) {
+
   .pricing .box {
     max-width: 80%;
     margin: 0 auto 30px auto;
@@ -1167,6 +1173,7 @@ section {
     margin: 0 auto 30px auto;
   }
 }
+
 
 /*--------------------------------------------------------------
 # Frequently Asked Questions

@@ -78,12 +78,16 @@ def edit(index):
             # if form.submit.validate(form):
             #     print(3)
             # a = request.form['about_value']
-            f = request.files['file']
-            print(f.filename)
-            filename = f.filename
-            if filename:
-                f.save(f'static/img/product/{filename}')
-                item.image_file_path = filename
+            f = request.files.getlist("files[]")
+
+            filenames = []
+            if f:
+                for i in f:
+
+                    filename = i.filename
+                    filenames.append(filename)
+                    i.save(f'static/img/product/{filename}')
+                item.image_file_path = '; '.join(filenames)
             # if item.title != form.title.data:
             item.title = form.title.data
             # print(form.content.data, item.about)
@@ -122,15 +126,22 @@ def add():
             return render_template('admin/add.html', product=products, form=form)
         elif request.method == 'POST':
             if form.validate_on_submit():
-                # print(request.form['status_select'])
-                f = request.files['file']
-                filename = secure_filename(f.filename)
-                f.save(f'static/img/product/{filename}')
                 db_sess = db_session.create_session()
                 item = Product()
+                # print(request.form['status_select'])
+                f = request.files.getlist("files[]")
+
+                filenames = []
+                if f:
+                    for i in f:
+                        filename = i.filename
+                        filenames.append(filename)
+                        i.save(f'static/img/product/{filename}')
+                    item.image_file_path = '; '.join(filenames)
+
                 item.title = form.title.data
                 item.about = form.content.data
-                item.image_file_path = filename
+
                 if request.form['status_select'] == "Хит":
                     item.status = 2
                 elif request.form['status_select'] == "Новинка":
