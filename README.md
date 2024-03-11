@@ -2,7 +2,7 @@
 
 # Сайт для московского производителя кондитерских изделий - Madam Baker
 
-![Logo Madam Baker](path/to/logo.png)
+![Logo Madam Baker](MDB_SRSTS/logo.png)
 
 ## Описание проекта
 
