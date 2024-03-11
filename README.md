@@ -70,5 +70,5 @@ _Страница редактирования_
 
 
 
-© 2022 Renat Gubayddullin.
+© 2022 Renat Gubaydullin.
 
