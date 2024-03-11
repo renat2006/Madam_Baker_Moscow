@@ -7,6 +7,7 @@ WORKDIR /app
 
 COPY . /app
 
+ENV FLASK_APP=main.py
 
 RUN pip install -r requirements.txt
 
